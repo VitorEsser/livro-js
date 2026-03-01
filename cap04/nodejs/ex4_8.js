@@ -1,14 +1,8 @@
 const prompt = require("prompt-sync")()
-const numero = Number(prompt("Número (centena): "))
+const valor = Number(prompt("Valor da Compra R$: "))
 
-if (numero < 100 || numero >= 1000) {
-  console.log("Erro...número dever ser uma centena")
-  return
-}
+const aux = Math.floor(valor / 20)
+const parcelas = aux == 0 ? 1 : aux > 6 ? 6 : aux
+const valorParcela = valor / parcelas
 
-const num1 = Math.floor(numero / 100)
-const sobra = numero % 100
-const num2 = Math.floor(sobra / 10)
-const num3 = sobra % 10
-
-console.log(`Número invertido ${num3}${num2}${num1}`)
+console.log(`Pode pagar em ${parcelas}x de R$: ${valorParcela.toFixed(2)}`)
